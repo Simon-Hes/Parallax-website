@@ -1,0 +1,157 @@
+*{
+    cursor: none;
+}
+
+
+body, html{
+    height: 100%;
+    margin: 0;
+    font-size: 18px;
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    line-height: 1.8em;
+    color:#666;
+    overflow-x: hidden;
+
+}
+
+.pimg1, .pimg2, .pimg3{
+    position: relative;
+    opacity: 1;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* you can set background-attachment to scroll instead of fixed 
+fixed = parallax, scroll = normal
+*/
+
+.pimg1{
+    background-image: url("https://imagizer.imageshack.com/img924/1657/fYKHNq.jpg");
+    min-height: 100%;
+}
+
+.pimg2{
+    background-image: url("https://imagizer.imageshack.com/img922/672/EMYJAU.jpg");
+    min-height: 400px;
+}
+
+.pimg3{
+    background-image: url("https://imagizer.imageshack.com/img923/6016/ZtyEyd.jpg");
+    min-height: 400px;
+}
+
+
+
+.section{
+    text-align: center;
+    padding: 50px 80px;
+
+}
+
+/* The section below this comment was supposed to be a lighter color section, but it looked really bad with my image
+   so instead i went for another dark section */
+
+
+.section-light{
+    background-color: #282e34;
+    color: #ddd;
+}
+
+
+.section-dark{
+    background-color: #282e34;
+    color: #ddd;
+}
+
+.ptext{
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    color: #000;
+    font-size: 27px;
+    letter-spacing: 8px;
+    text-transform: uppercase ;
+
+}
+
+.ptext .border{
+    background-color: #111;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+
+.ptext .border.trans{
+background-color: transparent;
+}
+
+/* i found out about this really cool function by accident, so for this text im using the mix-blend-mode :D */
+
+.ptext .border.trans.black{
+    mix-blend-mode: difference;
+}
+
+
+/* Below this is all the CSS for the custom cursor i made. */
+
+.cursor{
+    position: absolute;
+    left: 0;
+    top: 0;
+    /* border: 1.5px solid white;*/
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+
+}
+
+.cursor::after, .cursor::before{
+    content:"" ;
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 50px;
+
+}
+
+.cursor::before{
+    background-color: white;
+    transform: translate(-50%, -50%) scale(3);
+}
+
+.cursor.click::before{
+    animation: click 1s ease-in-out forwards;
+}
+
+@keyframes click{
+    0%{
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100%{
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(5);
+    }
+}
+
+
+
+/* this is for mobile device functionality */
+
+@media(max-width:568px){
+    .pimg1, .pimg2, .pimg3{
+        background-attachment: scroll;
+    }
+}
+
